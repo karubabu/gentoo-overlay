@@ -1,0 +1,14 @@
+<repositories version="1.0">
+	<repo quality="experimental" status="unofficial">
+		<name>karubabu</name>
+		<description>karubabu Overlay</description>
+        <homepage>https://github.com/karubabu/gentoo-overlay</homepage>
+		<owner>
+			<email>karubabu@users.noreply.github.com</email>
+			<name>karubabu</name>
+		</owner>
+        <source type="git">git://github.com/karubabu/gentoo-overlay.git</source>
+        <source type="git">https://github.com/karubabu/gentoo-overlay.git</source>
+		<feed>https://github.com/karubabu/gentoo-overlay/commits/master.atom</feed>
+	</repo>
+</repositories>
