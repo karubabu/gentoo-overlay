@@ -1,5 +1,5 @@
 <repositories version="1.0">
-	<repo quality="experimental" status="unofficial">
+	<repo priority="50" quality="experimental" status="unofficial">
 		<name>karubabu</name>
 		<description>karubabu Overlay</description>
         <homepage>https://github.com/karubabu/gentoo-overlay</homepage>
