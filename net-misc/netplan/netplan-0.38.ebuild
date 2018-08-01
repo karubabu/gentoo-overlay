@@ -24,6 +24,7 @@ DEPEND="
 >=app-text/pandoc-1.19.2.1-r1"
 
 RDEPEND="
+>=dev-python/netifaces-0.10.6
 >=dev-libs/libyaml-0.2.1
 >=dev-python/pyyaml-3.13[libyaml(+)]"
 
