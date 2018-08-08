@@ -1,0 +1,44 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+description="A C++ daemon for monero and the i2p network"
+description_graceful="Graceful shutdown, takes 10 minutes"
+
+command="/usr/bin/kovri"
+command_args="${KOVRI_OPTIONS}"
+user="${KOVRI_USER}:${KOVRI_GROUP}"
+start_stop_daemon_args="
+    --pidfile \"${KOVRI_PID}\"
+    --progress
+    --user \"${user}\"
+"
+retry="SIGTERM/20/SIGKILL/20"
+
+extra_started_commands="graceful"
+
+depend() {
+    use dns logger netmount
+}
+
+start_pre() {
+    if [ -z "${KOVRI_USER}" ] || \
+       [ -z "${KOVRI_GROUP}" ] || \
+       [ -z "${KOVRI_PID}" ] || \
+       [ -z "${KOVRI_LOG_DIR}" ] || \
+       [ -z "${KOVRI_OPTIONS}" ] ; then
+        eerror "Not all variables KOVRI_USER, KOVRI_GROUP, KOVRI_PID, KOVRI_LOG_DIR, KOVRI_OPTIONS are defined."
+        eerror "Check your /etc/conf.d/kovri."
+        return 1
+    fi
+    checkpath --directory --owner "${user}" "${KOVRI_LOG_DIR}"
+}
+
+graceful() {
+    # on SIGINT, kovri stops accepting tunnels and shuts down in 600 seconds
+    ebegin "Gracefully stopping kovri, this takes 10 minutes"
+    mark_service_stopping
+    eval start-stop-daemon --stop ${start_stop_daemon_args} \
+        --exec "${command}" --retry 'SIGINT/620/SIGTERM/20/SIGKILL/20'
+    eend $? && mark_service_stopped
+}

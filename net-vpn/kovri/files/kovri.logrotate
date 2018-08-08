@@ -1,0 +1,9 @@
+/var/log/kovri/*.log {
+        rotate 4
+        weekly
+        missingok
+        notifempty
+        create 640 kovri kovri
+        endscript
+}
+
