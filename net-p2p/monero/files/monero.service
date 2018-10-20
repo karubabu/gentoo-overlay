@@ -1,0 +1,13 @@
+[Unit]
+Description=Monero daemon
+After=network.target
+
+[Service]
+User=monero
+Group=monero
+WorkingDirectory=~
+RuntimeDirectory=monero
+ExecStart=/usr/bin/monerod --config-file /etc/monero/monerod.conf
+
+[Install]
+WantedBy=multi-user.target

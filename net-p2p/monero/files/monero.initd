@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+# Copyright 1999-2018 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+MONEROD_CONFIGFILE="${MONEROD_CONFIGFILE:-/etc/monero/monerod.conf}"
+
+command="/usr/bin/monerod"
+command_args="--config-file ${MONEROD_CONFIGFILE} ${MONEROD_OPTS}"
+command_user="${command_user:-monero:monero}"
+command_background=yes
+pidfile="/run/${RC_SVCNAME}.pid"
+required_files="${MONEROD_CONFIGFILE}"
+retry=${retry:-"TERM/60/KILL/5"}
+start_stop_daemon_args="${SSD_OPTS:-"--wait 2000"}"
+
+depend() {
+	need net
+}
