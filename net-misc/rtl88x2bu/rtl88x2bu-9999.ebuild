@@ -35,7 +35,8 @@ BUILD_TARGETS="modules"
 
 src_prepare() {
 	eapply_user
-	sed -i -e 's/EXTRA_CFLAGS += -Werror/#EXTRA_CFLAGS += -Werror/' Makefile || die "Sed failed!"
+	sed -i -e "s/EXTRA_CFLAGS += -Werror/# EXTRA_CFLAGS += -Werror/" Makefile || die "Sed failed!"
+	sed -i -e "s:-C \$(KSRC):-C /lib/modules/${KV_FULL}/build:" Makefile || die "Sed faild!"
 }
 
 pkg_setup() {
@@ -45,6 +46,7 @@ pkg_setup() {
 
 src_compile() {
 #	BUILD_PARAMS="KERNELDIR=${KV_DIR}"
+	BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
 	linux-mod_src_compile
 }
 
