@@ -34,9 +34,9 @@ BUILD_TARGETS="modules"
 # )
 
 src_prepare() {
-	eapply_user
-	sed -i -e "s/EXTRA_CFLAGS += -Werror/# EXTRA_CFLAGS += -Werror/" Makefile || die "Sed failed!"
+	sed -i -e "s:EXTRA_CFLAGS += -Werror:EXTRA_CFLAGS += -Wno-error=incompatible-pointer-types:" Makefile || die "Sed failed!"
 	sed -i -e "s:-C \$(KSRC):-C /lib/modules/${KV_FULL}/build:" Makefile || die "Sed faild!"
+	eapply_user
 }
 
 pkg_setup() {
