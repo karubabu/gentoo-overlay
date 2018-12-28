@@ -36,6 +36,9 @@ BUILD_TARGETS="modules"
 src_prepare() {
 	sed -i -e "s:EXTRA_CFLAGS += -Werror:EXTRA_CFLAGS += -Wno-error=incompatible-pointer-types:" Makefile || die "Sed failed!"
 	sed -i -e "s:-C \$(KSRC):-C /lib/modules/${KV_FULL}/build:" Makefile || die "Sed faild!"
+	if kernel_is 4 20; then
+		sed -i "s:get_monotonic_boottime:getboottime:" ./os_dep/linux/ioctl_cfg80211.c || die "Sed failed!"
+	fi
 	eapply_user
 }
 
