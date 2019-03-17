@@ -3,12 +3,13 @@
 
 EAPI=6
 
-inherit linux-info linux-mod eutils git-r3
+inherit linux-info linux-mod eutils
 
 DESCRIPTION="Updated driver for rtl88x2bu wifi adaptors based on rtl88x2BU_WiFi_linux_v5.2.4.4_26334.20180126_COEX20171012-5044."
 HOMEPAGE="https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959"
 
 if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959"
 	KEYWORDS=""
 else
@@ -32,7 +33,6 @@ src_prepare() {
 
 pkg_setup() {
 	linux-mod_pkg_setup
-    kernel_is ge 5 0 0 && EGIT_BRANCH="linux-5.0"
 }
 
 src_compile() {
