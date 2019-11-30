@@ -19,7 +19,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+python +server"
-S="${WORKDIR}/${MY_P/-/_}"
+S="${WORKDIR}/${MY_P/-/_}_PUBLIC"
 RESTRICT="mirror strip"
 
 DEPEND="app-shells/bash"
@@ -48,7 +48,6 @@ src_install(){
 		support/analyzeHeadless
 		support/buildGhidraJar
 		support/convertStorage
-		support/dumpGhidraThreads
 		support/ghidraDebug
 		support/launch.sh
 		support/pythonRun
@@ -61,6 +60,7 @@ src_install(){
 		Ghidra/Features/Decompiler/os/linux64/decompile
 		GPL/DemanglerGnu/os/linux64/demangler_gnu
 		GPL/DemanglerGnu/src/demangler_gnu
+		GPL/CabExtract/os/linux64/cabextract
 
 	"
 	for f in ${BINARIES}; do
