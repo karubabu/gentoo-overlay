@@ -27,8 +27,8 @@ MODULE_NAMES="88x2bu(kernel/drivers/net/wireless:${S})"
 BUILD_TARGETS="modules"
 
 src_prepare() {
-	sed -i -e "s:-C \$(KSRC):-C /lib/modules/${KV_FULL}/build:" Makefile || die "Sed faild!"
-	sed -ie "s:CONFIG_RTW_LOG_LEVEL = 4:CONFIG_RTW_LOG_LEVEL = 3:" Makefile || die "Sed faild!"
+	sed -i -e "s:-C \$(KSRC):-C /lib/modules/${KV_FULL}/build:" Makefile || die "Sed failed!"
+	sed -ie "s:CONFIG_RTW_LOG_LEVEL = 4:CONFIG_RTW_LOG_LEVEL = 3:" Makefile || die "Sed failed!"
 	eapply_user
 }
 
