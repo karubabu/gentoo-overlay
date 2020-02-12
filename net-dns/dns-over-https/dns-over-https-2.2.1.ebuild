@@ -44,6 +44,8 @@ src_prepare() {
 
 	sed -i -e 's/usr\/bin/bin/g' src/"${EGO_PN}"/NetworkManager/dispatcher.d/doh-client || die
 	sed -i -e 's/usr\/bin/bin/g' src/"${EGO_PN}"/NetworkManager/dispatcher.d/doh-server || die
+	sed -i -e 's:/usr/local:/usr:g' src/"${EGO_PN}"/systemd/doh-client.service || die
+	sed -i -e 's:/usr/local:/usr:g' src/"${EGO_PN}"/systemd/doh-server.service || die
 }
 
 src_compile() {
