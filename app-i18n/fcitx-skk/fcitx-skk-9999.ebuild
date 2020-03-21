@@ -26,10 +26,24 @@ IUSE=""
 
 RDEPEND="
 >=app-i18n/fcitx-qt5-1.2.3
->=app-i18n/libskk-1.0.1"
+>=app-i18n/libskk-1.0.1
+>=app-i18n/skk-jisyo-201905
+>=dev-libs/json-glib-1.4.4"
 DEPEND="${RDEPEND}"
 
 DOCS=()
+
+src_configure() {
+	cmake-utils_src_configure
+}
+
+src_compile() {
+	cmake-utils_src_make
+}
+
+src_install() {
+	cmake-utils_src_install
+}
 
 pkg_postinst() {
 	xdg_icon_cache_update
