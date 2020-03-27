@@ -5,20 +5,17 @@ EAPI="7"
 
 inherit cmake-utils
 
-if [[ "${PV}" =~ (^|\.)9999$ ]]; then
+if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/karubabu/fcitx-skk.git"
-fi
-
-DESCRIPTION="fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend."
-HOMEPAGE="https://gitlab.com/fcitx/fcitx-skk"
-if [[ "${PV}" =~ (^|\.)9999$ ]]; then
-	SRC_URI=""
+	KEYWORDS=""
 else
 	SRC_URI="https://github.com/fcitx/${PN}/archive/${PV}.tar.gz"
 	KEYWORDS="~amd64"
 fi
+
+DESCRIPTION="fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend."
+HOMEPAGE="https://gitlab.com/fcitx/fcitx-skk"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -28,7 +25,8 @@ RDEPEND="
 >=app-i18n/fcitx-qt5-1.2.3
 >=app-i18n/libskk-1.0.1
 >=app-i18n/skk-jisyo-201905
->=dev-libs/json-glib-1.4.4"
+>=dev-libs/json-glib-1.4.4
+>=x11-libs/gtk+-3.24.14"
 DEPEND="${RDEPEND}"
 
 DOCS=()
