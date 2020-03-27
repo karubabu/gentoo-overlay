@@ -19,7 +19,8 @@ RDEPEND="dev-libs/glib:2
 	dev-libs/json-glib
 	dev-libs/libgee:0.8
 	introspection? ( dev-libs/gobject-introspection )
-	nls? ( virtual/libintl )"
+	nls? ( virtual/libintl )
+	x11-libs/libxkbcommon"
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	dev-util/intltool
