@@ -1,18 +1,25 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit ltprune vala virtualx git-r3
+inherit vala virtualx
 
 DESCRIPTION="GObject-based library to deal with Japanese kana-to-kanji conversion method"
 HOMEPAGE="https://github.com/ueno/libskk"
-#SRC_URI="https://github.com/ueno/${PN}/releases/download/${PV}/${P}.tar.xz"
-EGIT_REPO_URI="https://github.com/ueno/${PN}.git"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/karubabu/${PN}.git"
+	EGIT_BRANCH="dev-clipdoard-access"
+	KEYWORDS=""
+else
+	SRC_URI="https://github.com/ueno/${PN}/archive/${PV}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="+introspection nls static-libs"
 
 RDEPEND="dev-libs/glib:2
@@ -47,5 +54,5 @@ src_test() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${D}" -name '*.la' -type f -delete || die
 }
