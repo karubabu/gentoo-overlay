@@ -28,7 +28,6 @@ BUILD_TARGETS="modules"
 
 src_prepare() {
 	sed -i -e "s:-C \$(KSRC):-C /lib/modules/${KV_FULL}/build:" Makefile || die "Sed failed!"
-	sed -ie "s:CONFIG_RTW_LOG_LEVEL = 4:CONFIG_RTW_LOG_LEVEL = 3:" Makefile || die "Sed failed!"
 	eapply_user
 }
 
