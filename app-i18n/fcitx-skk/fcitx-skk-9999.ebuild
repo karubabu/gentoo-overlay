@@ -5,10 +5,9 @@ EAPI="7"
 
 inherit cmake-utils
 
-if [[ ${PV} == 9999 ]]; then
+if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/karubabu/fcitx-skk.git"
-	KEYWORDS=""
 else
 	SRC_URI="https://github.com/fcitx/${PN}/archive/${PV}.tar.gz"
 	KEYWORDS="~amd64"

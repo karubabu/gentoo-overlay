@@ -5,16 +5,12 @@ EAPI="6"
 
 inherit cmake-utils
 
-if [[ "${PV}" =~ (^|\.)9999$ ]]; then
-	inherit git-r3
-
-	EGIT_REPO_URI="https://github.com/karubabu/fcitx-skk.git"
-fi
-
 DESCRIPTION="fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend."
 HOMEPAGE="https://gitlab.com/fcitx/fcitx-skk"
+
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
-	SRC_URI=""
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/karubabu/fcitx-skk.git"
 else
 	SRC_URI="https://github.com/fcitx/${PN}/archive/${PV}.tar.gz"
 	KEYWORDS="~amd64"
