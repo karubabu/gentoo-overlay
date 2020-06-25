@@ -1,0 +1,80 @@
+From 677a01a8b00edff5698e08047b29b12a0c917dd3 Mon Sep 17 00:00:00 2001
+From: karubabu <karubabu@users.noreply.github.com>
+Date: Thu, 25 Jun 2020 22:50:06 +0900
+Subject: [PATCH] Porting to GCC 10.
+ ref:https://gcc.gnu.org/gcc-10/porting_to.html
+
+---
+ src/parse.c | 3 +++
+ src/parse.h | 6 +++---
+ src/util.c  | 2 ++
+ src/util.h  | 4 ++--
+ 4 files changed, 10 insertions(+), 5 deletions(-)
+
+diff --git a/src/parse.c b/src/parse.c
+index ba10507..172c795 100644
+--- a/src/parse.c
++++ b/src/parse.c
+@@ -62,6 +62,9 @@ GList* netdefs_ordered;
+  * existing definition */
+ static GHashTable* ids_in_file;
+ 
++const char* current_file;
++int missing_ids_found;
++GHashTable *missing_id;
+ /**
+  * Load YAML file name into a yaml_document_t.
+  *
+diff --git a/src/parse.h b/src/parse.h
+index 0ed8fb2..94e8e5c 100644
+--- a/src/parse.h
++++ b/src/parse.h
+@@ -25,14 +25,14 @@
+ 
+ 
+ /* file that is currently being processed, for useful error messages */
+-const char* current_file;
++extern const char* current_file;
+ 
+ /* List of "seen" ids not found in netdefs yet by the parser.
+  * These are removed when it exists in this list and we reach the point of
+  * creating a netdef for that id; so by the time we're done parsing the yaml
+  * document it should be empty. */
+-GHashTable *missing_id;
+-int missing_ids_found;
++extern GHashTable *missing_id;
++extern int missing_ids_found;
+ 
+ /****************************************************
+  * Parsed definitions
+diff --git a/src/util.c b/src/util.c
+index 4b71ef1..9496744 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -24,6 +24,8 @@
+ 
+ #include "util.h"
+ 
++GHashTable* wifi_frequency_24;
++GHashTable* wifi_frequency_5;
+ /**
+  * Create the parent directories of given file path. Exit program on failure.
+  */
+diff --git a/src/util.h b/src/util.h
+index 4ed1a60..4cd6ca2 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -17,8 +17,8 @@
+ 
+ #pragma once
+ 
+-GHashTable* wifi_frequency_24;
+-GHashTable* wifi_frequency_5;
++extern GHashTable* wifi_frequency_24;
++extern GHashTable* wifi_frequency_5;
+ 
+ void safe_mkdir_p_dir(const char* file_path);
+ void g_string_free_to_file(GString* s, const char* rootdir, const char* path, const char* suffix);
+-- 
+2.27.0
+
