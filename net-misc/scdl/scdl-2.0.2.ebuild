@@ -7,7 +7,7 @@ DESCRIPTION="SoundCloud music downloader"
 
 HOMEPAGE="https://github.com/imthaghost/scdl"
 
-LICENSE="MIT"
+LICENSE="MIT Apache-2.0 BSD-2 BSD"
 
 SLOT="0"
 
