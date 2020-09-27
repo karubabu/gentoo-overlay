@@ -10,13 +10,13 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/sdushantha/tmpmail.git"
 	KEYWORDS=""
 else
+	KEYWORDS="~amd64"
+	SRC_URI=""
 	sleep 0
 fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE=""
 RDEPEND=">=net-misc/curl-7.72.0
 >=app-misc/jq-1.6-r3
 virtual/awk
