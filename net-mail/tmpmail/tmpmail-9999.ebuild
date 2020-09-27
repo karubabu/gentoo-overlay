@@ -23,5 +23,5 @@ virtual/awk
 >=www-client/w3m-0.5.3_p20190105"
 
 src_install() {
-	dobin tmpmail || die "Install failed."
+	dobin tmpmail
 }
