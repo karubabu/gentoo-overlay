@@ -5,8 +5,8 @@ EAPI=6
 
 inherit linux-info linux-mod eutils
 
-DESCRIPTION="Updated driver for rtl88x2bu wifi adaptors based on rtl88x2BU_WiFi_linux_v5.2.4.4_26334.20180126_COEX20171012-5044."
-HOMEPAGE="https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_COEX20180427-5959"
+DESCRIPTION="Updated driver for rtl88x2bu wifi adaptors based on Realtek's source distributed with myriad adapters."
+HOMEPAGE="https://github.com/cilynx/rtl88x2bu"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
