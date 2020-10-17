@@ -10,7 +10,8 @@ HOMEPAGE="https://github.com/cilynx/rtl88x2BU_WiFi_linux_v5.3.1_27678.20180430_C
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/cilynx/rtl88x2bu"
+	EGIT_REPO_URI="https://github.com/karubabu/rtl88x2bu"
+	EGIT_BRANCH="linux-5.8.0-support"
 	KEYWORDS=""
 else
 	# Space for future releases
