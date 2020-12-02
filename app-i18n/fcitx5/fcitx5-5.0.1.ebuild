@@ -2,16 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 
-inherit cmake git-r3 xdg-utils
+inherit cmake xdg-utils
 DESCRIPTION="Fcitx 5 is a generic input method framework released under LGPL-2.1+."
 HOMEPAGE="https://github.com/fcitx/fcitx5 https://fcitx-im.org/"
 
-EGIT_REPO_URI="https://github.com/fcitx/fcitx5.git"
-EGIT_COMMIT="${PV}"
-SRC_URI="https://download.fcitx-im.org/data/en_dict-20121020.tar.gz -> fcitx-data-en_dict-20121020.tar.gz"
+if [[ "${PV}" =~ (^|\.)9999$ ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/fcitx/fcitx5.git"
+	SRC_URI="https://download.fcitx-im.org/data/en_dict-20121020.tar.gz -> fcitx-data-en_dict-20121020.tar.gz"
+	KEYWORDS=""
+else
+	SRC_URI="https://download.fcitx-im.org/data/en_dict-20121020.tar.gz -> fcitx-data-en_dict-20121020.tar.gz
+	https://github.com/fcitx/${PN}/archive/${PV}.tar.gz"
+	KEYWORDS="~amd64"
+fi
+
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64"
 IUSE="systemd test coverage +enchant presage wayland doc +xdgautostart"
 RDEPEND="
 systemd? ( >=sys-apps/systemd-247_rc2 )
