@@ -11,7 +11,7 @@ if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/fcitx/fcitx5-qt.git"
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/fcitx/${PN}/archive/${PV}.tar.gz"
+	SRC_URI="https://github.com/fcitx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 LICENSE="BSD LGPL-2.1+"
