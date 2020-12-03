@@ -13,7 +13,7 @@ if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="https://download.fcitx-im.org/data/en_dict-20121020.tar.gz -> fcitx-data-en_dict-20121020.tar.gz
-	https://github.com/fcitx/${PN}/archive/${PV}.tar.gz"
+	https://github.com/fcitx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
