@@ -14,8 +14,6 @@ LICENSE="LGPL-2+"
 
 SLOT="5"
 
-KEYWORDS="~amd64"
-
 IUSE="+kcm +qt -test"
 
 RDEPEND="
