@@ -31,7 +31,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}
-	app-emulation/docker
+	app-containers/docker
 	policykit? ( sys-auth/polkit )"
 
 src_prepare() {
