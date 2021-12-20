@@ -10,11 +10,11 @@ HOMEPAGE="https://github.com/cilynx/rtl88x2bu"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	#EGIT_REPO_URI="https://github.com/cilynx/rtl88x2bu"
-	EGIT_REPO_URI="https://github.com/karubabu/rtl88x2bu"
+	EGIT_REPO_URI="https://github.com/cilynx/rtl88x2bu"
+	#EGIT_REPO_URI="https://github.com/karubabu/rtl88x2bu"
 	#EGIT_BRANCH="5.6.1.6_35492.20191025_COEX20180928-6a6a"
-	#EGIT_BRANCH="5.8.7.1_35809.20191129_COEX20191120-7777"
-	EGIT_BRANCH="resolve-gcc11-warning-Werror=misleading-indentation"
+	EGIT_BRANCH="5.8.7.1_35809.20191129_COEX20191120-7777"
+	#EGIT_BRANCH="resolve-gcc11-warning-Werror=misleading-indentation"
 	KEYWORDS=""
 else
 	# Space for future releases
