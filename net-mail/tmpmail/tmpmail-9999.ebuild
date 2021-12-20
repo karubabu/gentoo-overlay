@@ -8,7 +8,6 @@ HOMEPAGE="https://github.com/sdushantha/tmpmail"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/sdushantha/tmpmail.git"
-	KEYWORDS=""
 else
 	KEYWORDS="~amd64"
 	SRC_URI=""
