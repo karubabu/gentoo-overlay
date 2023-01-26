@@ -24,7 +24,7 @@ else
 	sleep 0
 fi
 
-LICENSE="MIT"
+LICENSE="GPL-2"
 SLOT="0"
 
 MODULE_NAMES="88x2bu(kernel/drivers/net/wireless:${S})"
