@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit linux-info linux-mod eutils
+inherit linux-info linux-mod
 
 DESCRIPTION="Updated driver for rtl88x2bu wifi adaptors based on Realtek's source distributed with myriad adapters."
 HOMEPAGE="https://github.com/cilynx/rtl88x2bu"
